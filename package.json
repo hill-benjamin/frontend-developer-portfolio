@@ -1,0 +1,23 @@
+{
+  "name": "personal-portfolio",
+  "version": "1.0.0",
+  "description": "Frontend Developer portfolio website with a contact form ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "portfolio",
+    "frontend",
+    "developer",
+    "neon-style"
+  ],
+  "author": "Benjamin Hill",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.2",
+    "nodemailer": "^6.9.7"
+  }
+}
