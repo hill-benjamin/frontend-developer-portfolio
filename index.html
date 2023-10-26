@@ -4,15 +4,505 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#012536">
-    <meta name="description" content="Explore my Frontend Developer Portfolio, showcasing my advanced skills in various libraries and technologies such as HTML, CSS, JavaScript, React, and more. Delivering an exceptional UX/UI experience." >
-    <title>Benjamin Hill: Frontend Developer</title>
-    <link rel="stylesheet" href="index.css" type="text/css">
-    <link rel="stylesheet" href="assets/normalize.css" type="text/css">
-    <link rel="icon" href="favicon.png" type="image">
 
-    <script src="assets/particles js/particles.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
-    
+     <!-- HTML Meta Tags -->
+    <title>Benjamin Hill: Frontend Developer</title>
+    <meta name="Benjamin Hill: Frontend Developer Portfolio" content="Portafolio como desarrollador web frontend, que muestra conocimientos en diversas tecnologias ">
+    <meta name="description" content="Explore my Frontend Developer Portfolio, showcasing my advanced skills in various libraries and technologies such as HTML, CSS, JavaScript, React, and more. Delivering an exceptional UX/UI experience." >
+    <meta name="author" content="Benjamin Hill">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://hillbenjamin.dev">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Benjamin Hill: Frontend Developer">
+    <meta property="og:description" content="Explore my Frontend Developer Portfolio, showcasing various technologies and my web development skills.">
+    <meta property="og:image" content="https://hillbenjamin.dev/assets/img/website-img.png">
+    <meta property="og:image:alt" content="Website Screenshot">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hillbenjamin.dev">
+    <meta name="twitter:title" content="Benjamin Hill: Frontend Developer">
+    <meta name="twitter:description" content="Explore my Frontend Developer Portfolio, showcasing various technologies and my web development skills.">
+    <meta name="twitter:image" content="https://hillbenjamin.dev/assets/img/website-img.png">
+
+    <link rel="icon" href="favicon.png" type="image">    
+
+    <style>
+        /* --critical CSS--  */
+
+        :root{
+            --white:rgb(249, 249, 249);
+            --navy-blue:rgb(6, 0, 18);
+            --yellow:rgb(167, 201, 17);
+            --light-yellow:rgb(241, 241, 10);
+            --cyan:#00ffee;
+            --aqua:rgb(39, 161, 192);
+            --purple:rgb(170, 20, 170);
+            --green:rgb(29, 228, 56);
+            --scrollbar-color:#55bdbd;
+        }
+        html, body{
+            width: 100%;
+            overflow-x: hidden;
+        }
+        body{
+            font-family: 'Inconsolata', 'Roboto', sans-serif, monospace;
+            background-color: var(--navy-blue);
+            color: var(--white);
+            scrollbar-color: var(--scrollbar-color) #55bdbd;
+            scrollbar-width: thin;
+            position: relative;
+        }
+        ::-webkit-scrollbar {
+            width: 5px; 
+        }
+        ::-moz-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-color); 
+        }
+        ::-webkit-scrollbar-track {
+            background: #000000; 
+        }
+        ::selection{
+            background: var(--scrollbar-color);
+            color: rgb(0, 0, 0); 
+        }
+        ::-moz-selection{
+            background:  var(--scrollbar-color); 
+            color: rgb(0, 0, 0); 
+        }
+        ::-webkit-selection{
+            background:  var(--scrollbar-color); 
+            color: rgb(0, 0, 0); 
+        }
+        .mouse-light {
+            width: 90px;
+            height: 90px;
+            background-color:  var(--scrollbar-color);
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 150;
+            filter: blur(80px);
+            transition: background-color 1s;
+        }
+        /* scroll reveal  */
+        .scroll-hide.left{transform: translateX(-100%)}
+        .scroll-hide.right{transform: translateX(100%)}
+        .scroll-hide, #contact-form-container.scroll-hide{
+            opacity: 0;
+            filter: blur(5px);
+            transition: all 1s;
+        }
+        .scroll-hide.show, #contact-form-container.show.active{
+            transform: translateX(0);
+            opacity: 1;
+            filter: blur(0);
+        }
+        .building-2.show{
+            filter: grayscale(65%) brightness(.65) contrast(200%) saturate(150%);
+        }
+        .project-card.second.scroll-hide,
+        .project-card.fourth.scroll-hide{
+            transform: translateX(80%) scaleX(-1);
+        }
+        .project-card.second.show,
+        .project-card.fourth.show{
+            transform: translateX(0) scaleX(-1);
+        }
+        /* start animation  */  
+        .title.third{
+            opacity: 0;
+            transform: translate(50%, -50%);
+            animation: toTranslate .35s ease-out 2.7s forwards, titleDelayThirdOpacity 1s ease-in 2.7s forwards;
+        }
+        .title.second{
+            opacity: 0;
+            transform: translate(35%, -35%);
+            animation: toTranslate .25s ease-out 2.9s forwards, titleDelaySecondOpacity .3s ease-in 2.95s forwards;
+        }
+        .title.first.original{
+            opacity: 0;
+            transform: translate(30%, -30%);
+            animation: toTranslate .25s ease-out 3s forwards, toOpacity .3s ease-in 3.1s forwards;
+        }
+        @keyframes toTranslate{to{transform: translate(0, 0);}}
+        @keyframes toOpacity{to{opacity:1;}}
+        @keyframes titleDelaySecondOpacity{to{opacity: .6;}}
+        @keyframes titleDelayThirdOpacity{to{opacity: .333;}}
+        .fullshot-img-container img{
+            opacity: 0;
+            transform: translate(10%, -10%);
+            animation: toOpacity .4s linear 3s forwards, toTranslate 1.8s linear 1.4s forwards;
+        }
+        header{
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            z-index: 500;
+        }
+
+        header ul{
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        header ul li a{
+            color: var(--white);
+            font-family: 'Oswald';
+            font-size: 22px;
+            font-weight: 400;
+            text-transform: uppercase;
+            text-wrap: nowrap;
+            text-shadow: -8px 3px 9px rgba(255, 255, 30, 0.2), -1px 1px 2px rgba(255, 255, 0, 0.3);
+            transition: text-shadow .3s, color .3s;
+        }
+
+        header ul li{
+            position: relative;
+            transition: transform .3s;
+        }
+
+        header ul li:hover{transform: scale(1.2);}
+        header ul li:hover a::after{
+            color: rgba(0, 0, 0, 0.65);
+            transform: skew(0deg, 0deg) rotate3d(-140, -40, -30, 60deg) translateY(10px);
+        }
+        header ul li:hover a{
+            text-shadow: -8px 3px 9px rgba(255, 255, 30, .4), -1px 1px 2px rgba(255, 255, 0, .5);
+            color:rgb(255, 255, 255, 1);
+        }
+
+        /* header links shadows  */
+        .home-li a::after{content:'//HOME'}
+        .about-li a::after{content:'//ABOUT'}
+        .skills-li a::after{content:'//SKILLS'}
+        .projects-li a::after{content:'//PROJECTS'}
+        .contact-li a::after{content:'//CONTACT'}
+
+        header ul li a:after{ 
+            transition: transform .3s, color .3s;
+            font: 400 28px 'Oswald';
+            position: absolute;
+            bottom: -75%;
+            left: -25%;
+            color: rgba(0, 0, 0, 0.35);
+            text-wrap: nowrap;
+            transform: skew(0deg, 0deg) rotate3d(-140, -40, -30, 68deg);
+            z-index: -1;
+            filter: blur(1.18px);
+            text-shadow:0 0 0;
+        }
+
+
+        /* HOME SECTION */
+        #home{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 650px;
+            background: linear-gradient(
+                180deg,
+                #46362e 0%,
+                #000000 70%,
+                #060012 100% 
+            );
+            position: relative;
+        }
+
+        #home h2{
+            position: absolute;
+            top: -1000px;
+            left: -1000px;
+            opacity: 0;
+        }
+        #home .logo{
+            width: 85px;
+            height: 85px;
+            z-index: 100;
+            position: absolute;
+            top: 20px;
+            left: 0;
+            filter: drop-shadow(0 0 5px rgba(12, 221, 221, 0.829)) drop-shadow(0 0 20px rgba(8, 212, 212, 0.61));
+        }
+        #home .logo img{
+            width: 100%;
+            height: 100%;
+        }
+        .h1-hidden{
+            opacity: 0;
+            position: absolute;
+            left: -1000%;
+        }
+        .title-container{
+            height: 27%;
+            margin: -4% 0 0 -4%;
+            display: inline-block;
+            position: relative;
+            width: 100%;
+            max-width: 960px;
+        }
+        .title{
+            color: var(--white);
+            display: inline-block;
+            font-family: 'Inconsolata';
+            font-weight: 800;
+            font-size: 76px;
+            z-index: 10;
+        }
+        .title.frontend-word, .title.developer-word{
+           position: absolute;
+           filter: blur(3.5px);
+        }
+        .title.first{
+            text-shadow: 
+            1px 1px 2px black,
+            1px -1px 2px black,
+            1px 0px 2px black,
+            0px 0px 1px rgba(16, 186, 216, 0.473), 
+            0px 0px 2px rgba(15, 196, 228, 0.404), 
+            0px 0px 3px rgba(23, 183, 211, 0.37), 
+            0px 0px 4px rgba(29, 169, 194, 0.462), 
+            0px 0px 5px rgba(0, 217, 255, 0.352), 
+            0px 0px 10px rgba(0, 217, 255, 0.277), 
+            0px 0px 20px rgba(0, 217, 255, 0.133), 
+            0px 0px 30px rgba(16, 198, 230, 0.188), 
+            0px 0px 40px rgba(0, 217, 255, 0.562), 
+            0px 0px 50px rgba(0, 217, 255, 0.459), 
+            0px 0px 60px rgba(0, 217, 255, 0.479), 
+            0px 0px 80px rgba(0, 217, 255, 0.541),
+            0px 0px 100px rgba(0, 217, 255, 0.541),
+            0px 0px 150px rgba(0, 217, 255, 0.541)
+        }
+        .title.frontend-word.first{
+            top: 0;
+            left: 9%;
+        }
+        .title.developer-word.first{
+            bottom: 0;
+            right: -1%;
+        }
+        .title.frontend-word.second{
+            top: calc(0% - 15px);
+            left: calc(9% + 23px);
+        }
+        .title.developer-word.second{
+            bottom: calc(0% + 15px);
+            right: calc(-1% - 20px);
+        }
+        .title.frontend-word.third{
+            top: calc(0% - 30px);
+            left: calc(9% + 46px);
+        }
+        .title.developer-word.third{
+            bottom: calc(0% + 30px);
+            right: calc(-1% - 40px);
+        }
+        .title.frontend-word.first.blow-fx{
+            opacity: 0;
+            animation: glowBlinkStart 15.5s linear forwards 2s, glowBlink 10s linear infinite 11s;
+        }
+        .title.developer-word.first.blow-fx{
+            opacity: 0;
+            animation: glowBlinkStart 15.5s linear forwards 2s, glowBlink 10s linear infinite 15s;
+        }
+        @keyframes glowBlinkStart{
+            0%, 7%{
+                opacity: 0;
+            }
+            9%{
+                opacity: .2;
+            }
+            11%{
+                opacity: .1;
+            }
+            20%{
+                opacity: .4;
+            }
+            26%{
+                opacity: 1;
+            }
+            29.5%, 50.5%, 54.5%, 57%, 58.2%, 58.7%, 59%, 59.125%, 59.2%, 59.275%, 59.350%, 59.410%, 59.435%{
+                opacity: .3;
+            }
+            30%, 51%, 55%, 57.5%, 58.4%, 58.8%, 59.05%, 59.150%, 59.225%, 59.300%, 59.375%, 59.420%, 59.440%{
+                opacity: .65;
+            }
+            30.5%, 51.5%, 55.5%, 58%, 58.6%, 58.9%, 59.1%, 59.175%, 59.250%, 59.325%, 59.400%, 59.430%, 59.445%{
+                opacity: .05;
+            }
+            60%, 100%{
+                opacity: .8;
+            }
+        }
+        @keyframes glowBlink{
+            0%, 18%, 18.50%, 19%, 19.50%, 40%, 40.5%, 70%, 70.1%, 70.2%, 77%, 84.5%,  86%, 92%, 92.5%, 100%{
+                opacity: .8;
+            }
+            18.25%, 18.75%, 19.25%, 40.25%, 70.05%, 70.15%, 78%, 84%, 85%, 92.25%{
+                opacity: .3;
+            }
+        }
+        .home-main-container{
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            bottom: 0;
+            height: 500px;
+            width: 100%;
+            margin: 0 0 0 -4%;
+        }
+        .home-main{
+            position: relative;
+            width: 80%;
+            min-width: 350px;
+            max-width: 700px;
+            height: 100%;
+        }
+        .fullshot-img-container{
+            overflow: hidden;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            translate: -50% 0;
+            z-index: 250;
+            width: 100%;
+        }
+        .fullshot-img-container img{
+            width: 100%;
+            margin-bottom: -55%;
+        }
+        .section-indicators-container{ /* section indicators */
+            position: fixed;
+            left: 5px;
+            bottom: 20px;
+            z-index: 5000;
+            padding: 10px;
+            display: flex;
+            flex-direction:column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .section-indicators-container button{
+            background-color: transparent;
+            margin: 0;
+            padding: 0;
+            height: 25px;
+            width: 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .section-indicators-container .line-shape{
+            position: absolute;
+        }
+        .section-indicators-container .random-shape{
+            margin: -5px 0;
+            fill: transparent;
+            position: absolute;
+        }
+        .random-shape path{
+            stroke-dasharray: 100%;
+            stroke-dashoffset: 100%;  
+        
+            transition: stroke-dashoffset .2s linear 0s;
+        }
+        .random-shape.show path{
+            stroke-dashoffset: 0%;
+            transition: stroke-dashoffset .2s linear .2s;
+        }
+
+        .line-shape path{
+            stroke-dashoffset: 142%;
+            stroke-dasharray: 142%;
+        
+            transition: stroke-dashoffset .2s linear 0s;
+        }
+        .line-shape.show path{
+            stroke-dashoffset: 0;
+            transition: stroke-dashoffset .2s linear .2s;
+        }
+        #particles-js{
+            position: absolute;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            opacity: .15;
+        }
+        .particles-js-mask{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0) 0%,
+                rgba(0, 0, 0, 0) 60%,
+                var(--navy-blue) 100%
+            );
+        }
+        .neon-rectangle{
+            background-color: transparent;
+            width: 50%;
+            bottom: -1px;
+            left: 50%;
+            transform: skew(-32deg, 0deg) translateX(-42%);
+            position: absolute;
+            z-index: 25;
+            box-shadow: none;
+            animation: showNeonRectangle .3s linear 2.7s forwards;
+        }
+        .neon-rectangle path{
+            stroke-dasharray: 370%;
+            stroke-dashoffset: -370%; 
+            fill:transparent;
+            stroke:var(--yellow);
+            animation: drawPath 1.5s linear 1.2s forwards;
+        }
+        .start-animation-show{
+            opacity: 0;
+            animation: toOpacity .4s linear 3s forwards;
+        }
+        @keyframes showNeonRectangle{
+            to{
+                background-color: rgba(255, 255, 0, 0.05);
+                box-shadow: 0px 0px 40px 1px rgb(255, 255, 0, 0.25);
+            }
+        }
+        @keyframes drawPath{
+            to{
+                fill:rgba(0,0,0,0);
+                stroke-dashoffset: 0px;
+            }
+        }      
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+
+    <link rel="preload" href="index.css" as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css">
+    <noscript><link rel="stylesheet" href="index.css" type="text/css"></noscript>
+
+    <link rel="preload" href="assets/normalize.css" as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css">
+    <noscript><link rel="stylesheet" href="assets/normalize.css" type="text/css"></noscript>
+
 </head>
 <body>
     <div class="mouse-light"></div> 
@@ -293,14 +783,21 @@
 
                 <div class="grid-item all"><p>y un tanto de backend...</p></div>
 
-                <figure class="grid-item three scroll-hide left">
+                <figure class="grid-item two scroll-hide left">
                     <div class="img-container">
                         <img class="nodejs-icon" alt="Node.js Icon" src="assets/img/icons/Skills/nodejs-icon.svg"/>
                         <div class="nodejs-icon shadow"></div>
                     </div> 
                     <figcaption>Node.js</figcaption>
                 </figure>
-                <figure class="grid-item five scroll-hide right">
+                <figure class="grid-item four scroll-hide">
+                    <div class="img-container">
+                        <img class="php-icon" alt="php Icon" src="assets/img/icons/Skills/php-icon.svg"/>
+                        <div class="php-icon shadow"></div>
+                    </div>
+                    <figcaption>PHP</figcaption>
+                </figure>
+                <figure class="grid-item six scroll-hide right">
                     <div class="img-container">
                         <img class="sql-icon" alt="SQL Icon" src="assets/img/icons/Skills/sql-icon.svg"/>
                         <div class="sql-icon shadow"></div>
@@ -328,8 +825,8 @@
                 <path d="M178.997 24.5H179.997V36.9798H178.997V24.5Z" fill="#00948B"/>
             </svg>
 
-            <img class="building-1 scroll-hide left" src="assets/img/building-3.png" alt="buildings">
-            <img class="factory-1 scroll-hide left" src="assets/img/factory-1.png" alt="factory">
+            <img class="building-1 scroll-hide left" src="assets/img/building-3.png" alt="buildings" loading="lazy">
+            <img class="factory-1 scroll-hide left" src="assets/img/factory-1.png" alt="factory" loading="lazy">
 
             <div class="project-card first scroll-hide left">
                 <div class="project-card-inner-container">
@@ -339,7 +836,7 @@
                     </a>
 
                     <div class="img-container">
-                        <img src="assets/img/icons/Projects/delish-restaurant.png" alt="Delish Restaurant, Frontend developer project">
+                        <img src="assets/img/icons/Projects/delish-restaurant.png" alt="Delish Restaurant, Frontend developer project" loading="lazy">
                     </div>
                     <div class="inner-content">
                         <div class="p-container">
@@ -365,7 +862,7 @@
                 </div>
             </div>
 
-            <img class="building-2 scroll-hide right" src="assets/img/building-2.png" alt="Dark Buildings">
+            <img class="building-2 scroll-hide right" src="assets/img/building-2.png" alt="Dark Buildings" loading="lazy">
 
             <div class="project-card second scroll-hide right">
                 <div class="project-card-inner-container">
@@ -375,7 +872,7 @@
                     </a>
 
                     <div class="img-container">
-                        <img src="assets/img/icons/Projects/random-quote-machine.png" alt="Random Quote Machine, frontend developer project">
+                        <img src="assets/img/icons/Projects/random-quote-machine.png" alt="Random Quote Machine, frontend developer project" loading="lazy">
                     </div>
                     <div class="inner-content">
                         <div class="p-container">
@@ -399,7 +896,7 @@
                 </div>
             </div>
 
-            <img class="building-3 scroll-hide left" src="assets/img/building-1.png" alt="Dark Buildings Image">
+            <img class="building-3 scroll-hide left" src="assets/img/building-1.png" alt="Dark Buildings Image" loading="lazy">
 
             <div class="project-card third scroll-hide left">
                 <div class="project-card-inner-container">
@@ -409,7 +906,7 @@
                     </a>
 
                     <div class="img-container">
-                        <img src="assets/img/icons/Projects/pomodoro-timer.png" alt="Pomodoro Timer, developer junior project">
+                        <img src="assets/img/icons/Projects/pomodoro-timer.png" alt="Pomodoro Timer, developer junior project" loading="lazy">
                     </div>
                     <div class="inner-content">
                         <div class="p-container">
@@ -442,7 +939,7 @@
                         <div class="github-lottie"></div>
                     </a>
                     <div class="img-container">
-                        <img src="assets/img/icons/Projects/frontend-portfolio-white.png" alt="Hill Benjamin, Frontend Developer Portfolio Logo">
+                        <img src="assets/img/icons/Projects/frontend-portfolio-white.png" alt="Hill Benjamin, Frontend Developer Portfolio Logo" loading="lazy">
                     </div>
                     <div class="inner-content">
                         <div class="p-container">
@@ -457,8 +954,8 @@
                             <img class="html-icon" src="assets/img/icons/Skills/html-icon.svg" alt="HTML"/>
                             <img class="css-icon" src="assets/img/icons/Skills/css-icon.svg" alt="CSS"/>
                             <img class="javascript-icon" src="assets/img/icons/Skills/javascript-icon.svg" alt="JavaScript"/>
-                            <img class="nodejs-icon" src="assets/img/icons/Skills/nodejs-icon.svg" alt="Node.js Icon"/>
                             <img class="sql-icon" src="assets/img/icons/Skills/sql-icon.svg" alt="SQL Icon"/>
+                            <img class="php-icon" src="assets/img/icons/Skills/php-icon.svg" alt="PHP Icon"/>
                         </div>
                     </div>
 
@@ -480,7 +977,7 @@
                     <p>info.hillbenjamin@gmail.com</p> 
                 </a>
                 <a href="https://github.com/hill-benjamin" target="_blank" class="contact-github">
-                    <img src="assets/img/icons/Contact/github-neon-icon.png" alt="Github Icon">
+                    <img src="assets/img/icons/Contact/github-neon-icon.png" alt="Github Icon" loading="lazy">
                     <p>@hill-benjamin</p> 
                 </a>
             </div>
@@ -495,7 +992,7 @@
                 </button>
                 <div id="close-form-btn-label" class="sr-only">Close and hide the contact form</div>
 
-                <form id="contact-form" action="/send" method="post">
+                <form id="contact-form" action="form-handler.php" method="post">
                     <input required id="name" type="text" name="name" placeholder=" "/>
                     <div class="border-bottom first"></div>
                     <label for="name">Nombre</label>
@@ -515,13 +1012,15 @@
                     <button class="submit" type="submit">Enviar Formulario</button>
                 </form>
 
+                <div id="form-status-message"></div>
+
                 <svg id="contact-form-outer-lines" xmlns="http://www.w3.org/2000/svg" viewBox="-0.1 -44.1 35.2 44.2">
                     <path d="M 0 0 L 0 -44 L 35 -44 L 35 0 L 0 0" stroke-width="0.1" fill="none"/>
                 </svg>
             </div>
 
             <div id="contact-mask">
-                <img id="contact-blur-image" class="blur-image" src="assets/img/neon-city-background-blur.png" alt="Neon city, cyberpunk style">
+                <img id="contact-blur-image" class="blur-image" src="assets/img/neon-city-background-blur.png" alt="Neon city, cyberpunk style" loading="lazy">
             </div>
         </section>
     </main>
@@ -529,6 +1028,9 @@
         <p>&copy; Copyright 2023.</p>
         <p>Coded and designed by <span>Benjamin Hill</span></p>
     </footer>
+
+    <script src="assets/particles js/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
     <script src="index.js"></script>
 </body>
 </html>

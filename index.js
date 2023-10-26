@@ -6,11 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
 const mouseLight = document.querySelector('.mouse-light');
 
 function updateLightPosition(e) {
-  mouseX = e.x;
-  mouseY = e.y; 
-
-  mouseLight.style.left = mouseX + 'px';
-  mouseLight.style.top = mouseY + 'px';
+  mouseLight.style.left = e.x + 'px';
+  mouseLight.style.top = e.y + 'px';
 }
 
 document.addEventListener('mousemove', updateLightPosition);
@@ -403,25 +400,33 @@ if(window.matchMedia('(max-width: 553px)')){
 }
 
 
+// formulario php 
 
-// CONTACT FORM FUNCTIONALITY 
-// backend, form with MySQL & nodejs 
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("contact-form").addEventListener("submit", function (event) {
+      event.preventDefault();
 
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const form = e.target;
+      let formStatusMessage = document.getElementById('form-status-message')
+      let formData = new FormData(this); 
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "form-handler.php", true);
+      xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 
-  // Envía el formulario utilizando AJAX o Fetch
-  fetch('/send', {
-    method: 'POST',
-    body: new FormData(form),
-  })
-    .then((response) => response.text())
-    .then((message) => {
-      formVisibilityAnimations();
-    })
+      xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4){ 
+            if(xhr.status === 200) {
+              formStatusMessage.innerHTML = "¡Formulario enviado con éxito!";
+              formStatusMessage.style.color = "rgb(92, 207, 92);";
+            } else{
+              formStatusMessage.innerHTML = "¡Error al enviar formulario!";
+              formStatusMessage.style.color = "rgb(211, 55, 55);";
+            }
+          }
+      };
+
+      xhr.send(formData); 
+  });
 });
-
 
 
 
